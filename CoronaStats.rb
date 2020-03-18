@@ -18,6 +18,8 @@ module Corona
 			@countries_stats[country].each do |key, value|
 				 ret_string << "#{key.capitalize}: #{value}\n"
 			end
+			dead_to_infected_ratio = @countries_stats[country]["deaths"] / @countries_stats[country]["cases"].to_f
+			ret_string << "Dead to infected ratio: #{(dead_to_infected_ratio * 100).round(2)}%\n"
 
 			return ret_string.join
 		end
