@@ -4,7 +4,8 @@ Create a new bot with command "/newbot"
 
 You'll get access token for Telegram's HTTP API
 You can save token as an environment variable:
-export TOKEN=<token-value>
+export TOKEN=token-value
+
 
 use that token to start a bot with ruby script like this:
 
