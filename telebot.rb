@@ -7,8 +7,7 @@ puts "Token is: " + token.to_s
 stats = Corona::Stats.new
 time = Time.now
 
-my_string = stats.total_country("Croatia")
-followed_countries = stats.get_countries
+contaminated_countries = stats.get_countries
 
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
@@ -16,7 +15,7 @@ Telegram::Bot::Client.run(token) do |bot|
   		stats = Corona::Stats.new
   	end
   	if not message.text.nil? and message.text[0] = "/"
-	  	if followed_countries.include? message.text.sub("/", "").capitalize
+	  	if contaminated_countries.include? message.text.sub("/", "").capitalize
 	  		puts "Country exists!"
 	  		country_name = message.text.sub("/", "").capitalize
 	  		country_summary = stats.total_country(country_name)
