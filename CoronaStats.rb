@@ -9,6 +9,13 @@ module Corona
 
 		def total_country(country)
 			ret_string = []
+			if country == 'usa'
+				country = 'USA'
+			end
+
+			if country == 'uk'
+				country = 'UK'
+			end
 			@countries_stats[country].each do |key, value|
 				 ret_string << "#{key.capitalize}: #{value}\n"
 			end
