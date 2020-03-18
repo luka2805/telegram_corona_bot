@@ -33,13 +33,6 @@ Telegram::Bot::Client.run(token) do |bot|
 	  		country_name = message.text.sub("/", "").capitalize
 	  		country_summary = stats.total_country(country_name)
 	  		bot.api.send_message(chat_id: message.chat.id, text: country_summary)
-      
-      elsif country_abbreviations.include? message.text.sub("/", "").upcase
-        puts message.chat.id.to_s +  " - Country exists!"
-        country_name = message.text.sub("/", "")
-
-        country_summary = stats.total_country(country_name)
-        bot.api.send_message(chat_id: message.chat.id, text: country_summary)
 	  	else
 	  		puts "Country not found!"
 	  	end
