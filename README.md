@@ -1,6 +1,6 @@
 First create a bot in Telegram - search for "BotFather"
 
-Create a new bot with command /newbot
+Create a new bot with command "/newbot"
 
 You'll get access token for Telegram's HTTP API
 You can save token as an environment variable:
