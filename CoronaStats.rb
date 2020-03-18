@@ -17,7 +17,13 @@ module Corona
 				country = 'UK'
 			end
 			@countries_stats[country].each do |key, value|
-				 ret_string << "#{key.capitalize}: #{value}\n"
+				if country == 'USA'
+					ret_string << "#{key}: #{value}\n"
+				elsif country == 'UK'
+					ret_string << "#{key}: #{value}\n"
+				else
+					ret_string << "#{key.capitalize}: #{value}\n"
+				end
 			end
 			dead_to_infected_ratio = @countries_stats[country]["Total Deaths"].sub(",", "").to_f / @countries_stats[country]["Total Cases"].sub(",", "").to_f
 			ret_string << "Dead to infected ratio: #{(dead_to_infected_ratio * 100).round(2)}%\n"
