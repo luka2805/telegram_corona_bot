@@ -16,6 +16,11 @@ module Corona
 			if country == 'uk'
 				country = 'UK'
 			end
+
+			if @countries_stats[country].nil?
+				return "Nothing found!"
+			end
+			
 			@countries_stats[country].each do |key, value|
 				if country == 'USA'
 					ret_string << "#{key}: #{value}\n"
