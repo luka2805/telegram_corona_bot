@@ -21,10 +21,6 @@ module Corona
 			return response.read_body
 		end
 
-		def get_countries_stats
-
-		end
-
 		def parse_to_json
 			parsed_data = Nokogiri::HTML.parse(@source_data)
 
@@ -32,6 +28,9 @@ module Corona
 			table_body = table.xpath("(//tbody)[1]")
 
 			table_rows = table_body.css("tr")
+
+			# Adding row of total world's values
+			table_rows << parsed_data.xpath("//table[@id='main_table_countries_today']//tr[@class='total_row']")[0]
 
 			json_array = []
 
@@ -45,6 +44,10 @@ module Corona
 				active_cases		= row.css("td")[6].text.strip
 				serious 				= row.css("td")[7].text.strip.empty? ? "0" : row.css("td")[7].text.strip
 				total_per_1m 		= row.css("td")[8].text.strip
+
+				if country == "Total:"
+					country = "Total"
+				end
 
 				json_array << {country => {
 					"Total Cases" => total_cases, 
