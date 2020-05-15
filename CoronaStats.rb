@@ -2,6 +2,8 @@ require_relative 'Cases'
 
 module Corona
 	class Stats
+		attr_reader :countries_stats
+		
 		def initialize
 			@countries_stats = Cases.countries_stats
 		end

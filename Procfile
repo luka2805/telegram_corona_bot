@@ -1,0 +1,1 @@
+worker ruby telebot.rb $BOT_TOKEN

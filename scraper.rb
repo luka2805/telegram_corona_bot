@@ -5,6 +5,8 @@ require 'nokogiri'
 
 module Corona
 	class Scraper
+		attr_reader :parsed_data
+
 		def initialize
 			@source_data = get_source_html
 		end
@@ -35,15 +37,15 @@ module Corona
 			json_array = []
 
 			table_rows.each do |row|
-				country 				= row.css("td")[0].text.strip
-				total_cases 		= row.css("td")[1].text.strip
-				new_cases 			= row.css("td")[2].text.strip.empty? ? "0" : row.css("td")[2].text.strip
-				total_deaths 		= row.css("td")[3].text.strip.empty? ? "0" : row.css("td")[3].text.strip
-				new_deaths 			= row.css("td")[4].text.strip.empty? ? "0" : row.css("td")[4].text.strip
-				total_recovered = row.css("td")[5].text.strip.empty? ? "0" : row.css("td")[5].text.strip
-				active_cases		= row.css("td")[6].text.strip
-				serious 				= row.css("td")[7].text.strip.empty? ? "0" : row.css("td")[7].text.strip
-				total_per_1m 		= row.css("td")[8].text.strip
+				country 			= row.css("td")[1].text.strip
+				total_cases 		= row.css("td")[2].text.strip
+				new_cases 			= row.css("td")[3].text.strip.empty? ? "0" : row.css("td")[3].text.strip
+				total_deaths 		= row.css("td")[4].text.strip.empty? ? "0" : row.css("td")[4].text.strip
+				new_deaths 			= row.css("td")[5].text.strip.empty? ? "0" : row.css("td")[5].text.strip
+				total_recovered 	= row.css("td")[6].text.strip.empty? ? "0" : row.css("td")[6].text.strip
+				active_cases		= row.css("td")[7].text.strip
+				serious 			= row.css("td")[8].text.strip.empty? ? "0" : row.css("td")[8].text.strip
+				total_per_1m 		= row.css("td")[9].text.strip
 
 				if country == "Total:"
 					country = "Total"
